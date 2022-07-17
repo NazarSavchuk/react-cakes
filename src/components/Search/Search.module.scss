@@ -1,0 +1,40 @@
+.root {
+  position: relative;
+}
+
+.input {
+  border: 1px solid rgba($color: #000000, $alpha: 0.1);
+  padding: 12px 20px;
+  padding-left: 40px;
+  width: 300px;
+  border-radius: 12px;
+  font-size: 16px;
+  transition: all 0.15s ease-in-out;
+  &:focus {
+    border: 1px solid rgba($color: #000000, $alpha: 0.2);
+  }
+  @media (max-width: 640px) {
+    width: 170px;
+    display: block;
+  }
+}
+.iconSearch {
+  width: 24px;
+  height: 24px;
+  opacity: 0.3;
+  position: absolute;
+  left: 12px;
+  top: 12px;
+}
+.iconClear {
+  width: 16px;
+  height: 16px;
+  opacity: 0.3;
+  position: absolute;
+  right: 12px;
+  top: 16px;
+  cursor: pointer;
+  &:hover {
+    opacity: 0.6;
+  }
+}

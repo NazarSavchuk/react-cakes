@@ -1,0 +1,46 @@
+@import "../variables";
+
+.header {
+  border-bottom: 1px solid $gray-line;
+  padding: 40px 0;
+  @media (max-width: 1060px) {
+    padding-bottom: 0px;
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: flex;
+
+    img {
+      margin-right: 15px;
+      @media (max-width: 1060px) {
+        margin-right: 5px;
+      }
+    }
+
+    h1 {
+      color: #181818;
+      font-size: 24px;
+      letter-spacing: 1%;
+      text-transform: uppercase;
+      font-weight: 800;
+
+      @media (max-width: 1060px) {
+        width: 90px;
+      }
+    }
+
+    p {
+      color: #7b7b7b;
+
+      @media (max-width: 1060px) {
+        display: none;
+      }
+    }
+  }
+}
