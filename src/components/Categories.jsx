@@ -1,8 +1,6 @@
 import React from "react";
 
 function Categories({ value, onChangeCategory }) {
-  console.log(value);
-
   const categories = ["All", "Meat", "Vegan", "Grill", "Hot", "Closed"];
 
   return (
