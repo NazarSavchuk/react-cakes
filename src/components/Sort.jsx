@@ -1,7 +1,14 @@
 import React from "react";
 
+import { useSelector, useDispatch } from "react-redux";
+import { setSort } from "../redux/slices/filterSlice";
+
 function Sort({ value, onChangeSort }) {
+  const dispatch = useDispatch();
+  const sort = useSelector((state) => state.filter.sort);
+
   const [isVisiblePopup, setIsVisiblePopup] = React.useState(false);
+
   const list = [
     { name: "popular (DESC)", sortProperty: "rating" },
     { name: "popular (ASC)", sortProperty: "-rating" },
@@ -23,8 +30,8 @@ function Sort({ value, onChangeSort }) {
     },
   ];
 
-  function onClickListHide(i) {
-    onChangeSort(i);
+  function onClickListHide(obj) {
+    dispatch(setSort(obj));
     setIsVisiblePopup(false);
   }
   return (
@@ -43,7 +50,7 @@ function Sort({ value, onChangeSort }) {
         </svg>
         <b>Sort by: </b>
         <span onClick={() => setIsVisiblePopup(!isVisiblePopup)}>
-          {value.name}
+          {sort.name}
         </span>
       </div>
       {isVisiblePopup && (
@@ -52,7 +59,7 @@ function Sort({ value, onChangeSort }) {
             {list.map((obj, i) => (
               <li
                 className={
-                  value.sortProperty === obj.sortProperty ? "active" : ""
+                  sort.sortProperty === obj.sortProperty ? "active" : ""
                 }
                 key={i}
                 onClick={() => onClickListHide(obj)}>

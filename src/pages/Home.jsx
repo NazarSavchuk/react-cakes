@@ -12,26 +12,20 @@ import { SearchContext } from "../App";
 
 function Home() {
   const dispatch = useDispatch();
-  const categoryId = useSelector((state) => state.filter.categoryId);
-  console.log(dispatch);
-  const setCategoryId = () => {};
+  const { categoryId, sort } = useSelector((state) => state.filter);
+  const sortType = sort.sortProperty;
 
   const { searchValue } = React.useContext(SearchContext);
   const [items, setItems] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(true);
-  // const [categoryId, setCategoryId] = React.useState(0);
   const [currentPage, setCurrentPage] = React.useState(2);
-  const [sortType, setSortType] = React.useState({
-    name: "popular",
-    sortProperty: "rating",
-  });
 
   const onChangeCategory = (id) => {
     dispatch(setCategoryId(id));
   };
 
-  const order = sortType.sortProperty.includes("-") ? "asc" : "desc";
-  const sortBy = sortType.sortProperty.replace("-", "");
+  const order = sortType.includes("-") ? "asc" : "desc";
+  const sortBy = sortType.replace("-", "");
   const category = categoryId > 0 ? `category=${categoryId}` : "";
   const search = searchValue ? `&search=${searchValue}` : "";
 
@@ -54,7 +48,7 @@ function Home() {
     )
     .map((obj) => <PizzaBlock key={obj.id} {...obj} />);
 
-  const skeletons = [...new Array(6)].map((_, index) => (
+  const skeletons = [...new Array(4)].map((_, index) => (
     <Skeleton key={index} />
   ));
 
@@ -62,7 +56,7 @@ function Home() {
     <div className="container">
       <div className="content__top">
         <Categories value={categoryId} onChangeCategory={onChangeCategory} />
-        <Sort value={sortType} onChangeSort={(id) => setSortType(id)} />
+        <Sort />
       </div>
       <h2 className="content__title">All pizzas</h2>
       <div className="content__items">{isLoading ? skeletons : pizzas}</div>
