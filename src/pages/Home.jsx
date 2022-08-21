@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 
 import { setCategoryId, setCurrentPage } from "../redux/slices/filterSlice";
 import Categories from "../components/Categories";
@@ -7,6 +6,7 @@ import Sort from "../components/Sort";
 import PizzaBlock from "../components/PizzaBlock";
 import Skeleton from "../components/PizzaBlock/Skeleton";
 import Pagination from "../components/Pagination";
+import { fetchPizzas } from "../redux/slices/pizzaSlice";
 
 import { useSelector, useDispatch } from "react-redux";
 import { SearchContext } from "../App";
@@ -16,11 +16,11 @@ function Home() {
   const { categoryId, sort, currentPage } = useSelector(
     (state) => state.filter
   );
+  const { items, status } = useSelector((state) => state.pizza);
   const sortType = sort.sortProperty;
 
   const { searchValue } = React.useContext(SearchContext);
-  const [items, setItems] = React.useState([]);
-  const [isLoading, setIsLoading] = React.useState(true);
+  // const [items, setItems] = React.useState([]);
 
   const onChangeCategory = (id) => {
     dispatch(setCategoryId(id));
@@ -32,16 +32,18 @@ function Home() {
   const search = searchValue ? `&search=${searchValue}` : "";
 
   React.useEffect(() => {
-    setIsLoading(true);
+    const getPizzas = (async function () {
+      dispatch(
+        fetchPizzas({
+          order,
+          sortBy,
+          category,
+          search,
+          currentPage,
+        })
+      );
+    })();
 
-    axios
-      .get(
-        `https://62abb2aabd0e5d29af143603.mockapi.io/react-pizza?&page=${currentPage}&limit=4&${category}$&sortBy=${sortBy}&order=${order}${search}`
-      )
-      .then((res) => {
-        setItems(res.data);
-        setIsLoading(false);
-      });
     window.scrollTo(0, 0);
   }, [categoryId, sortType, searchValue, currentPage]);
 
@@ -66,7 +68,17 @@ function Home() {
         <Sort />
       </div>
       <h2 className="content__title">All pizzas</h2>
-      <div className="content__items">{isLoading ? skeletons : pizzas}</div>
+      {status === "error" ? (
+        <div style={{ textAlign: "center", margin: "3rem" }}>
+          <p style={{ fontSize: "2rem" }}>Pizzas load error :(</p>
+          <p>try to reload later</p>
+        </div>
+      ) : (
+        <div className="content__items">
+          {status === "loading" ? skeletons : pizzas}
+        </div>
+      )}
+
       <Pagination currentPage={currentPage} onChangePage={onChangePage} />
     </div>
   );
