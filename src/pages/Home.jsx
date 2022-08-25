@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import {
   selectFilter,
@@ -50,7 +51,11 @@ function Home() {
     .filter((obj) =>
       obj.title.toLowerCase().includes(searchValue.toLowerCase())
     )
-    .map((obj) => <PizzaBlock key={obj.id} {...obj} />);
+    .map((obj) => (
+      <Link key={obj.id} to={`/pizza/${obj.id}`}>
+        <PizzaBlock {...obj} />
+      </Link>
+    ));
 
   const skeletons = [...new Array(4)].map((_, index) => (
     <Skeleton key={index} />
