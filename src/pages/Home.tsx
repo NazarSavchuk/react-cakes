@@ -15,14 +15,14 @@ import { fetchPizzas, selectPizzaData } from "../redux/slices/pizzaSlice";
 
 import { useSelector, useDispatch } from "react-redux";
 
-function Home() {
+const Home: React.FC = () => {
   const dispatch = useDispatch();
   const { categoryId, sort, currentPage, searchValue } =
     useSelector(selectFilter);
   const { items, status } = useSelector(selectPizzaData);
   const sortType = sort.sortProperty;
 
-  const onChangeCategory = (id) => {
+  const onChangeCategory = (id: number) => {
     dispatch(setCategoryId(id));
   };
 
@@ -34,6 +34,7 @@ function Home() {
   React.useEffect(() => {
     const getPizzas = (async function () {
       dispatch(
+        //@ts-ignore
         fetchPizzas({
           order,
           sortBy,
@@ -48,10 +49,10 @@ function Home() {
   }, [categoryId, sortType, searchValue, currentPage]);
 
   const pizzas = items
-    .filter((obj) =>
+    .filter((obj: any) =>
       obj.title.toLowerCase().includes(searchValue.toLowerCase())
     )
-    .map((obj) => (
+    .map((obj: any) => (
       <Link key={obj.id} to={`/pizza/${obj.id}`}>
         <PizzaBlock {...obj} />
       </Link>
@@ -61,8 +62,8 @@ function Home() {
     <Skeleton key={index} />
   ));
 
-  const onChangePage = (number) => {
-    dispatch(setCurrentPage(number));
+  const onChangePage = (page: number) => {
+    dispatch(setCurrentPage(page));
   };
 
   return (
@@ -86,6 +87,6 @@ function Home() {
       <Pagination currentPage={currentPage} onChangePage={onChangePage} />
     </div>
   );
-}
+};
 
 export default Home;

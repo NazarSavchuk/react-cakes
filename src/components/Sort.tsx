@@ -3,19 +3,18 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectSort, setSort } from "../redux/slices/filterSlice";
 
-function Sort({ value, onChangeSort }) {
+function Sort() {
   const dispatch = useDispatch();
   const sort = useSelector(selectSort);
 
-  const sortRef = React.useRef();
+  const sortRef = React.useRef<HTMLDivElement>(null);
 
   const [isVisiblePopup, setIsVisiblePopup] = React.useState(false);
 
   React.useEffect(() => {
-    const handleClickOutside = (event) => {
+    const handleClickOutside = (event: any) => {
       if (!event.path.includes(sortRef.current)) {
         setIsVisiblePopup(false);
-        console.log("click outside");
       }
     };
 
@@ -24,7 +23,12 @@ function Sort({ value, onChangeSort }) {
     return () => document.body.removeEventListener("click", handleClickOutside);
   }, []);
 
-  const list = [
+  type SortItem = {
+    name: string;
+    sortProperty: string;
+  };
+
+  const list: SortItem[] = [
     { name: "popular (DESC)", sortProperty: "rating" },
     { name: "popular (ASC)", sortProperty: "-rating" },
     {
@@ -45,7 +49,7 @@ function Sort({ value, onChangeSort }) {
     },
   ];
 
-  function onClickListHide(obj) {
+  function onClickListHide(obj: SortItem) {
     dispatch(setSort(obj));
     setIsVisiblePopup(false);
   }

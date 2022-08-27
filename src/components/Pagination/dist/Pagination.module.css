@@ -1,0 +1,43 @@
+.root {
+  width: 400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+}
+.root li {
+  border-radius: 50%;
+  transition: background 0.15s;
+}
+.root li:hover {
+  background-color: #fe5f1e;
+}
+.root li:hover a {
+  color: #fff;
+}
+.root li a {
+  display: inline-block;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid;
+  padding: 12px;
+  text-align: center;
+  color: #fe5f1e;
+  line-height: 18px;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: 0.15s;
+}
+
+:global .disabled a {
+  color: #ababab !important;
+}
+:global .disabled a:hover {
+  background-color: #e0e0e0;
+}
+:global .selected a {
+  background-color: #fe5f1e;
+  color: #fff !important;
+}
