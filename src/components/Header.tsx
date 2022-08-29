@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-import logoSvg from "../assets/img/pizza-logo.svg";
+import logoPNG from "../assets/img/logo.png";
 
 import Search from "./Search";
 import { selectCart } from "../redux/slices/cartSlice";
@@ -22,10 +22,10 @@ function Header() {
       <div className="container">
         <Link to="/">
           <div className="header__logo">
-            <img width="38" src={logoSvg} alt="Pizza logo" />
+            <img width="38" src={logoPNG} alt="Cakes logo" />
             <div>
-              <h1>Nazar's Pizza</h1>
-              <p>the most delicious pizza in the universe</p>
+              <h1>Nazar's Cakes</h1>
+              <p>the most delicious cakes in the universe</p>
             </div>
           </div>
         </Link>

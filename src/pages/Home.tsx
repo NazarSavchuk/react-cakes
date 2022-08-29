@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 import {
   selectFilter,
@@ -52,11 +51,7 @@ const Home: React.FC = () => {
     .filter((obj: any) =>
       obj.title.toLowerCase().includes(searchValue.toLowerCase())
     )
-    .map((obj: any) => (
-      <Link key={obj.id} to={`/pizza/${obj.id}`}>
-        <PizzaBlock {...obj} />
-      </Link>
-    ));
+    .map((obj: any) => <PizzaBlock {...obj} />);
 
   const skeletons = [...new Array(4)].map((_, index) => (
     <Skeleton key={index} />
@@ -72,7 +67,7 @@ const Home: React.FC = () => {
         <Categories value={categoryId} onChangeCategory={onChangeCategory} />
         <Sort />
       </div>
-      <h2 className="content__title">All pizzas</h2>
+      <h2 className="content__title">All cakes</h2>
       {status === "error" ? (
         <div style={{ textAlign: "center", margin: "3rem" }}>
           <p style={{ fontSize: "2rem" }}>Pizzas load error :(</p>

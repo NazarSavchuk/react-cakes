@@ -8,7 +8,7 @@
     border-radius: 50%;
     transition: background 0.15s;
     &:hover {
-      background-color: #fe5f1e;
+      background-color: #8c68a5;
       a {
         color: #fff;
       }
@@ -21,7 +21,7 @@
       border: 1px solid;
       padding: 12px;
       text-align: center;
-      color: #fe5f1e;
+      color: #cf9df2;
 
       line-height: 18px;
       cursor: pointer;
@@ -44,7 +44,7 @@
   }
   .selected {
     a {
-      background-color: #fe5f1e;
+      background-color: #8c68a5;
       color: #fff !important;
     }
   }

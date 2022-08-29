@@ -2,7 +2,7 @@
 
 .button {
   display: inline-block;
-  background-color: $orange;
+  background-color: #cf9df2;
   border-radius: 30px;
   padding: 10px 20px;
   min-width: 100px;
@@ -26,11 +26,11 @@
   }
 
   &:hover {
-    background-color: darken($orange, 8%);
+    background-color: darken(#cf9df2, 8%);
   }
 
   &:active {
-    background-color: darken($orange, 12%);
+    background-color: darken(#cf9df2, 12%);
     transform: translateY(1px);
   }
 
@@ -56,20 +56,20 @@
 
   &--outline {
     background-color: #fff;
-    border-color: $orange;
+    border-color: #cf9df2;
     &,
     span {
-      color: $orange;
+      color: #cf9df2;
     }
 
     svg {
       path {
-        fill: $orange;
+        fill: #cf9df2;
       }
     }
 
     &:hover {
-      background-color: $orange;
+      background-color: #cf9df2;
 
       &,
       span {
@@ -84,7 +84,7 @@
     }
 
     &:active {
-      background-color: darken($orange, 8%);
+      background-color: darken(#cf9df2, 8%);
       @media (max-width: 1060px) {
         background-color: darken(#fff, 8%);
       }
@@ -122,7 +122,7 @@
     i {
       display: inline-block;
       border-radius: 30px;
-      background-color: $orange;
+      background-color: #cf9df2;
       color: #fff;
       font-weight: 600;
       width: 22px;

@@ -442,7 +442,7 @@ body {
   padding: 40px 0;
 }
 .content__title {
-  margin: 35px 0;
+  margin: 15px 0;
   font-size: 20px;
 }
 .content__items {
@@ -648,7 +648,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 210px;
+  width: 160px;
   border-color: #dddddd;
 }
 .cart__bottom-buttons .go-back-btn span {
@@ -678,8 +678,18 @@ body {
 }
 .cart--empty {
   margin: 0 auto;
-  width: 560px;
+  max-width: 560px;
   text-align: center;
+}
+
+@media screen and (max-width: 560px) {
+  .cart--empty {
+    width: 240px;
+  }
+  .cart--empty img {
+    width: 300px;
+    margin: 10px auto 10px;
+  }
 }
 .cart--empty h2 {
   font-size: 32px;

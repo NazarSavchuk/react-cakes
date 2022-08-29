@@ -4,7 +4,23 @@
 @import "components/all";
 
 body {
-  background-color: $background;
+  background: rgb(207, 157, 242);
+  background: -moz-linear-gradient(
+    180deg,
+    rgba(207, 157, 242, 1) 0%,
+    rgba(246, 243, 254, 1) 95%
+  );
+  background: -webkit-linear-gradient(
+    180deg,
+    rgba(207, 157, 242, 1) 0%,
+    rgba(246, 243, 254, 1) 95%
+  );
+  background: linear-gradient(
+    180deg,
+    rgba(207, 157, 242, 1) 0%,
+    rgba(246, 243, 254, 1) 95%
+  );
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#cf9df2",endColorstr="#f6f3fe",GradientType=1);
 }
 
 .wrapper {
@@ -97,11 +113,12 @@ body {
     display: flex;
     align-items: center;
     cursor: pointer;
+    display: inline-block;
     @include noselect();
-
+    @media (max-width: 576px) {
+      margin-left: 25px;
+    }
     span {
-      display: inline-block;
-      margin-left: 7px;
       color: #b6b6b6;
       font-size: 18px;
     }
@@ -127,15 +144,24 @@ body {
   &__item {
     display: flex;
     width: 100%;
+
     border-top: 1px solid $gray-line;
     padding-top: 30px;
     margin-top: 30px;
+    @media (max-width: 576px) {
+      display: flex;
+      margin-top: 5px;
+      padding-top: 5px;
+    }
 
     &-img {
       display: flex;
       align-items: center;
       margin-right: 15px;
       width: 10%;
+      @media (max-width: 576px) {
+        display: inline;
+      }
 
       img {
         width: 80px;
@@ -148,16 +174,28 @@ body {
       flex-direction: column;
       justify-content: center;
       width: 40%;
+      @media (max-width: 576px) {
+        width: 20%;
+        display: inline;
+        margin-left: 35px;
+        margin-top: 6px;
+      }
 
       h3 {
         font-weight: bold;
         font-size: 22px;
         line-height: 27px;
         letter-spacing: 0.01em;
+        @media (max-width: 576px) {
+          font-size: 18px;
+        }
       }
 
       p {
         font-size: 18px;
+        @media (max-width: 576px) {
+          font-size: 12px;
+        }
         color: #8d8d8d;
       }
     }
@@ -167,7 +205,8 @@ body {
       align-items: center;
       justify-content: space-between;
       width: 13%;
-
+      @media (max-width: 576px) {
+      }
       &-minus {
         svg {
           path:first-of-type {
@@ -178,6 +217,7 @@ body {
 
       b {
         font-size: 22px;
+        margin: 0 6px;
       }
     }
 
@@ -186,11 +226,13 @@ body {
       align-items: center;
       justify-content: center;
       width: 33%;
-
+      @media (max-width: 576px) {
+      }
       b {
         font-weight: bold;
         font-size: 22px;
         letter-spacing: 0.01em;
+        margin-left: 40px;
       }
     }
 
@@ -199,7 +241,8 @@ body {
       align-items: center;
       justify-content: flex-end;
       width: 4%;
-
+      @media (max-width: 576px) {
+      }
       .button {
         border-color: darken($color: $gray-line, $amount: 10);
       }
@@ -239,7 +282,7 @@ body {
 
         &:last-of-type {
           b {
-            color: $orange;
+            color: #cf9df2;
           }
         }
       }
@@ -295,7 +338,9 @@ body {
     margin: 0 auto;
     width: 560px;
     text-align: center;
-
+    @media (max-width: 576px) {
+      width: 270px;
+    }
     h2 {
       font-size: 32px;
       margin-bottom: 10px;

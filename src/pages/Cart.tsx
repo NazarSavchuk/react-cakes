@@ -58,7 +58,7 @@ const Cart: React.FC = () => {
                 stroke-linejoin="round"
               />
             </svg>
-            Корзина
+            Cart
           </h2>
           <div onClick={onClickClear} className="cart__clear">
             <svg

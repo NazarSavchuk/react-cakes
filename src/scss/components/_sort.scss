@@ -25,8 +25,8 @@
     }
 
     span {
-      color: $orange;
-      border-bottom: 1px dashed $orange;
+      color: #cf9df2;
+      border-bottom: 1px dashed #cf9df2;
       cursor: pointer;
     }
   }
@@ -55,7 +55,7 @@
 
         &.active {
           font-weight: bold;
-          color: $orange;
+          color: #cf9df2;
         }
       }
     }
