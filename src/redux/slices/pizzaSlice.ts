@@ -11,7 +11,7 @@ type Pizza = {
   types: number[];
 };
 
-enum Status {
+export enum Status {
   LOADING = "loading",
   SUCCESS = "success",
   ERROR = "error",
