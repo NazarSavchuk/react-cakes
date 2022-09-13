@@ -1,15 +1,18 @@
 import React from "react";
 
-import { useSelector, useDispatch } from "react-redux";
-import { selectSort, setSort } from "../redux/slices/filterSlice";
+import { useDispatch } from "react-redux";
+import { setSort, Sort } from "../redux/slices/filterSlice";
 
 type PopupClick = MouseEvent & {
   path: Node[];
 };
 
-function Sort() {
+type SortPopupProps = {
+  value: Sort;
+};
+
+const SortPopup: React.FC<SortPopupProps> = React.memo(({ value }) => {
   const dispatch = useDispatch();
-  const sort = useSelector(selectSort);
 
   const sortRef = React.useRef<HTMLDivElement>(null);
 
@@ -75,7 +78,7 @@ function Sort() {
         </svg>
         <b>Sort by: </b>
         <span onClick={() => setIsVisiblePopup(!isVisiblePopup)}>
-          {sort.name}
+          {value.name}
         </span>
       </div>
       {isVisiblePopup && (
@@ -84,7 +87,7 @@ function Sort() {
             {list.map((obj, i) => (
               <li
                 className={
-                  sort.sortProperty === obj.sortProperty ? "active" : ""
+                  value.sortProperty === obj.sortProperty ? "active" : ""
                 }
                 key={i}
                 onClick={() => onClickListHide(obj)}>
@@ -96,5 +99,5 @@ function Sort() {
       )}
     </div>
   );
-}
-export default Sort;
+});
+export default SortPopup;

@@ -50,21 +50,21 @@ const Home: React.FC = () => {
     .filter((obj: any) =>
       obj.title.toLowerCase().includes(searchValue.toLowerCase())
     )
-    .map((obj: any) => <PizzaBlock {...obj} />);
+    .map((obj: any) => <PizzaBlock key={obj.id} {...obj} />);
 
   const skeletons = [...new Array(4)].map((_, index) => (
     <Skeleton key={index} />
   ));
 
-  const onChangePage = (page: number) => {
+  const onChangePage = React.useCallback((page: number) => {
     dispatch(setCurrentPage(page));
-  };
+  }, []);
 
   return (
     <div className="container">
       <div className="content__top">
         <Categories value={categoryId} onChangeCategory={onChangeCategory} />
-        <Sort />
+        <Sort value={sort} />
       </div>
       <h2 className="content__title">All cakes</h2>
       {status === "error" ? (
