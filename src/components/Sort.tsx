@@ -57,7 +57,7 @@ const SortPopup: React.FC<SortPopupProps> = React.memo(({ value }) => {
     },
   ];
 
-  function onClickListHide(obj: SortItem) {
+  function onClickListHide(obj: any) {
     dispatch(setSort(obj));
     setIsVisiblePopup(false);
   }
