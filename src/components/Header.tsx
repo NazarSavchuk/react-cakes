@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import logoPNG from "../assets/img/logo.png";
 
 import Search from "./Search";
-import { selectCart } from "../redux/slices/cartSlice";
+import { selectCart } from "../redux/cart/selectors";
 
 function Header() {
   const { items, totalPrice } = useSelector(selectCart);
